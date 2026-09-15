@@ -224,6 +224,38 @@
         color: var(--text-muted);
         word-break: break-word;
       }
+      .install {
+        margin: 0 0 2.5rem;
+      }
+      .install-list {
+        display: grid;
+        gap: 1rem;
+      }
+      .install-item {
+        padding: 1rem 1.25rem 1.25rem;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 0.75rem;
+      }
+      .install-item p {
+        margin: 0 0 0.6rem;
+        font-size: 0.9rem;
+        color: var(--text-muted);
+      }
+      .install-item pre {
+        margin: 0;
+        padding: 0.75rem 1rem;
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: 0.5rem;
+        overflow-x: auto;
+      }
+      .install-item code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas,
+          "Liberation Mono", monospace;
+        font-size: 0.9rem;
+        color: var(--text);
+      }
       footer {
         padding-bottom: 3.5rem;
         text-align: center;
@@ -331,6 +363,24 @@
           <p>Find us on Mastodon - @debops@fosstodon.org</p>
         </a>
       </div>
+
+      <section class="install">
+        <div class="install-list">
+          <div class="install-item">
+            <p>Prerequisites (Debian/Ubuntu)</p>
+            <pre><code>sudo apt install build-essential python3-dev libffi-dev libssl-dev \
+                 libsasl2-dev libldap2-dev pipx</code></pre>
+          </div>
+          <div class="install-item">
+            <p>Python package with Ansible</p>
+            <pre><code>pipx install --include-deps debops[ansible]</code></pre>
+          </div>
+          <div class="install-item">
+            <p>Ansible Collection with roles and playbooks</p>
+            <pre><code>ansible-galaxy collection install debops.debops</code></pre>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer>
