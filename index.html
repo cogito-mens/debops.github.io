@@ -231,13 +231,12 @@
       #theme-toggle {
         display: none;
         position: fixed;
-        left: 50%;
+        left: 1.5rem;
         bottom: 0;
-        transform: translateX(-50%);
         z-index: 10;
         width: 2.75rem;
-        height: 3.25rem;
-        padding: 0.6rem 0 0.9rem;
+        height: 3rem;
+        padding: 0.6rem 0;
         border: 1px solid var(--border);
         border-bottom: none;
         border-radius: 0.75rem 0.75rem 0 0;
@@ -246,13 +245,6 @@
         font-size: 1.15rem;
         line-height: 1;
         cursor: pointer;
-        clip-path: polygon(
-          0 0,
-          100% 0,
-          100% calc(100% - 0.9rem),
-          50% 100%,
-          0 calc(100% - 0.9rem)
-        );
       }
       html[data-theme] #theme-toggle {
         display: block;
