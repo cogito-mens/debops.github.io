@@ -55,11 +55,34 @@
         line-height: 1.6;
       }
       header {
+        position: relative;
+        overflow: hidden;
         display: flex;
         align-items: center;
         justify-content: center;
         gap: 2rem;
         margin: 0 0 2.5rem;
+      }
+      .logo-backdrop {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 42rem;
+        max-width: 100%;
+        margin: 0;
+        opacity: 0.06;
+        pointer-events: none;
+      }
+      .logo-backdrop img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+      .header-text,
+      .logo-wrap {
+        position: relative;
+        z-index: 1;
       }
       .logo-wrap {
         flex-shrink: 0;
@@ -172,12 +195,19 @@
   </head>
   <body>
     <header>
+      <picture class="logo-backdrop" aria-hidden="true">
+        <source type="image/svg+xml" srcset="debops-logo-full.svg" />
+        <img src="debops-logo.png" alt="" />
+      </picture>
       <div class="header-text">
         <h1>DebOps</h1>
         <p class="tagline">Your Debian-based data center in a box</p>
       </div>
       <div class="logo-wrap">
-        <img src="debops-logo.png" alt="DebOps logo" />
+        <picture>
+          <source type="image/svg+xml" srcset="debops-logo.svg" />
+          <img src="debops-logo.png" alt="DebOps logo" />
+        </picture>
       </div>
     </header>
 
