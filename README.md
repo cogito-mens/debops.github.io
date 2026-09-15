@@ -20,7 +20,7 @@ The page is a landing page for the DebOps project with two jobs:
 | File | Description |
 |------|-------------|
 | `index.html` | The landing page with the `rel="me"` verification links |
-| `debops-logo.png` | Project logo, copied from `lib/images/debops-text.png` in `debops/debops` |
+| `debops-logo.png` | Project logo, copied from `lib/images/debops.png` in `debops/debops` |
 | `LICENSE` | GPL-3.0-or-later, the project license |
 | `LICENSE-CC-BY-SA-4.0` | CC BY-SA 4.0, for the DebOps logo |
 | `favicon.ico` | DebOps favicon, copied from `lib/images/favicon.ico` in `debops/debops` |
