@@ -191,11 +191,13 @@
       @media (min-width: 40rem) {
         .cards {
           grid-template-columns: repeat(2, 1fr);
+          grid-template-rows: repeat(3, auto);
+          grid-auto-flow: column;
         }
-      }
-      @media (min-width: 72rem) {
-        .cards {
-          grid-template-columns: 1fr;
+        .cards > :last-child:nth-child(odd) {
+          grid-column: 1 / -1;
+          justify-self: center;
+          width: calc(50% - 0.5rem);
         }
       }
       .card {
