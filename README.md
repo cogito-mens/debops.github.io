@@ -21,8 +21,7 @@ The page is a landing page for the DebOps project with two jobs:
 |------|-------------|
 | `index.html` | The landing page with the `rel="me"` verification links |
 | `debops-logo.png` | Project logo (raster fallback), copied from `lib/images/debops.png` in `debops/debops` |
-| `debops-logo.svg` | Vector logo, copied from `lib/images/debops-small.svg` in `debops/debops` |
-| `debops-logo-full.svg` | Full vector logo with the wordmark `<text>` removed, used for the faded background, copied from `lib/images/debops.svg` in `debops/debops` |
+| `debops-logo-full.svg` | Full vector logo with the wordmark `<text>` removed, used for the header logo and the faded background, copied from `lib/images/debops.svg` in `debops/debops` |
 | `LICENSE` | GPL-3.0-or-later, the project license |
 | `LICENSE-CC-BY-SA-4.0` | CC BY-SA 4.0, for the DebOps logo |
 | `favicon.ico` | DebOps favicon, copied from `lib/images/favicon.ico` in `debops/debops` |
