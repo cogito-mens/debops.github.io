@@ -139,6 +139,14 @@
         height: auto;
         display: block;
       }
+      @media (prefers-color-scheme: dark) {
+        header img {
+          opacity: 0.75;
+        }
+      }
+      html[data-theme="light"] header img {
+        opacity: 1;
+      }
       .header-text {
         display: flex;
         flex-direction: column;
