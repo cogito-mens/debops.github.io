@@ -25,23 +25,23 @@
     <style>
       :root {
         color-scheme: dark;
-        --bg: #161d2a;
-        --bg-card: #1f2a3d;
-        --border: #2e3d55;
-        --text: #e6ebf2;
-        --text-muted: #9fb0c6;
+        --bg: #1e1712;
+        --bg-card: #281f17;
+        --border: #3a2e21;
+        --text: #ece7e0;
+        --text-muted: #baab97;
         --accent: #e38b22;
         --focus: #f0a94e;
-        --link: #eab456;
+        --link: #e2a04f;
       }
       @media (prefers-color-scheme: light) {
         :root {
           color-scheme: light;
-          --bg: #f5f7fa;
+          --bg: #f7f2e9;
           --bg-card: #ffffff;
-          --border: #d8dfe8;
-          --text: #1c2534;
-          --text-muted: #5a6a80;
+          --border: #e0d5c3;
+          --text: #2b231a;
+          --text-muted: #645845;
           --accent: #b5600a;
           --focus: #8a4a08;
           --link: #9a5600;
@@ -70,11 +70,21 @@
       header {
         text-align: center;
       }
+      .logo-wrap {
+        display: inline-block;
+        padding: 2rem;
+        margin: 0 auto 1.5rem;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(227, 139, 34, 0.16),
+          transparent 70%
+        );
+      }
       header img {
         width: 10rem;
         height: auto;
         display: block;
-        margin: 0 auto 1.5rem;
       }
       h1 {
         margin: 0 0 0.25rem;
@@ -157,7 +167,9 @@
   </head>
   <body>
     <header>
-      <img src="debops-logo.png" alt="DebOps logo" />
+      <div class="logo-wrap">
+        <img src="debops-logo.png" alt="DebOps logo" />
+      </div>
       <h1>DebOps</h1>
       <p class="tagline">Your Debian-based data center in a box</p>
     </header>
