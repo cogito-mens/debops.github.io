@@ -1,0 +1,13 @@
+{
+  "subject": "acct:debops@debops.org",
+  "aliases": [
+    "https://fosstodon.org/@debops"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "type": "application/activity+json",
+      "href": "https://fosstodon.org/@debops"
+    }
+  ]
+}
