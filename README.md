@@ -18,21 +18,6 @@ The page has two jobs:
    redirect available on GitHub Pages) to the main repository at
    <https://github.com/debops/debops>.
 
-## Content
-
-| File | Description |
-|------|-------------|
-| `index.html` | The redirect page with the `rel="me"` verification links |
-| `LICENSE` | GPL-3.0-or-later, the project license |
-| `LICENSE-CC-BY-SA-4.0` | CC BY-SA 4.0, for the DebOps logo | 
-| `favicon.ico` | DebOps favicon, copied from `lib/images/favicon.ico` in `debops/debops` |
-
-## Updating the verification links
-
-If the DebOps Mastodon profile moves to a different instance, update the
-`<link rel="me">` URLs in `index.html` and commit. The change is picked up
-automatically by Mastodon on the next verification run.
-
 ## Logo attribution
 
 The favicon is the DebOps logo, designed by
