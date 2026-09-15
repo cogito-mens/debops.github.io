@@ -15,7 +15,8 @@ The page is a landing page for the DebOps project with two jobs:
    checkmark is shown once the link is verified.
 
 2. **Landing page.** A short project description with links to the GitHub
-   repository, the documentation and the Matrix room.
+   repository, the documentation and the Matrix room. It follows the OS
+   light/dark preference with a manual toggle at the bottom of the screen.
 
 | File | Description |
 |------|-------------|

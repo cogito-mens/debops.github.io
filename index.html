@@ -24,6 +24,29 @@
     <meta property="og:image" content="https://debops.github.io/debops-logo.png" />
     <style>
       :root {
+        color-scheme: light dark;
+        --bg: #f5f1ec;
+        --bg-card: #ffffff;
+        --border: #e3dcd2;
+        --text: #241f1a;
+        --text-muted: #6b6258;
+        --accent: #a80030;
+        --focus: #b53252;
+        --link: #8c0028;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #1a1715;
+          --bg-card: #262220;
+          --border: #3a342c;
+          --text: #e9e2d8;
+          --text-muted: #a89e91;
+          --accent: #e6859e;
+          --focus: #f2a8bd;
+          --link: #ec9db4;
+        }
+      }
+      html[data-theme="light"] {
         color-scheme: light;
         --bg: #f5f1ec;
         --bg-card: #ffffff;
@@ -33,6 +56,17 @@
         --accent: #a80030;
         --focus: #b53252;
         --link: #8c0028;
+      }
+      html[data-theme="dark"] {
+        color-scheme: dark;
+        --bg: #1a1715;
+        --bg-card: #262220;
+        --border: #3a342c;
+        --text: #e9e2d8;
+        --text-muted: #a89e91;
+        --accent: #e6859e;
+        --focus: #f2a8bd;
+        --link: #ec9db4;
       }
       * {
         box-sizing: border-box;
@@ -183,6 +217,7 @@
         word-break: break-word;
       }
       footer {
+        padding-bottom: 3.5rem;
         text-align: center;
         font-size: 0.85rem;
         color: var(--text-muted);
@@ -192,6 +227,48 @@
       }
       footer p {
         margin: 0.25rem 0;
+      }
+      #theme-toggle {
+        display: none;
+        position: fixed;
+        left: 50%;
+        bottom: 0;
+        transform: translateX(-50%);
+        z-index: 10;
+        width: 2.75rem;
+        height: 3.25rem;
+        padding: 0.6rem 0 0.9rem;
+        border: 1px solid var(--border);
+        border-bottom: none;
+        border-radius: 0.75rem 0.75rem 0 0;
+        background: var(--bg-card);
+        color: var(--accent);
+        font-size: 1.15rem;
+        line-height: 1;
+        cursor: pointer;
+        clip-path: polygon(
+          0 0,
+          100% 0,
+          100% calc(100% - 0.9rem),
+          50% 100%,
+          0 calc(100% - 0.9rem)
+        );
+      }
+      html[data-theme] #theme-toggle {
+        display: block;
+      }
+      #theme-toggle:focus-visible {
+        outline: 2px solid var(--focus);
+        outline-offset: 2px;
+      }
+      .icon-sun {
+        display: none;
+      }
+      html[data-theme="dark"] .icon-sun {
+        display: inline;
+      }
+      html[data-theme="dark"] .icon-moon {
+        display: none;
       }
       a:focus-visible {
         outline: 2px solid var(--focus);
@@ -254,5 +331,34 @@
         Tasos Alvas (2020), incorporating the Debian Open Use Logo.
       </p>
     </footer>
+
+    <button id="theme-toggle" type="button" aria-label="Switch to dark mode" title="Switch to dark mode">
+      <span class="icon-moon" aria-hidden="true">☾</span>
+      <span class="icon-sun" aria-hidden="true">☀</span>
+    </button>
+    <script>
+      (function () {
+        var KEY = "debops-theme";
+        var root = document.documentElement;
+        var stored;
+        try { stored = localStorage.getItem(KEY); } catch (e) {}
+        var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        var theme = stored || (prefersDark ? "dark" : "light");
+        root.dataset.theme = theme;
+        var button = document.getElementById("theme-toggle");
+        function label() {
+          return theme === "dark" ? "Switch to light mode" : "Switch to dark mode";
+        }
+        button.setAttribute("aria-label", label());
+        button.title = label();
+        button.addEventListener("click", function () {
+          theme = theme === "dark" ? "light" : "dark";
+          root.dataset.theme = theme;
+          button.setAttribute("aria-label", label());
+          button.title = label();
+          try { localStorage.setItem(KEY, theme); } catch (e) {}
+        });
+      })();
+    </script>
   </body>
 </html>
