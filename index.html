@@ -8,20 +8,49 @@
       name="description"
       content="DebOps - a set of Free and Open Source tools that let you bootstrap and manage an IT infrastructure based on Debian or Ubuntu operating systems, using Ansible as the main configuration management platform."
     />
-    <link rel="canonical" href="https://debops.github.io/" />
+    <link rel="canonical" href="https://debops.org/" />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <link href="https://fosstodon.org/@debops" rel="me" />
     <link href="https://github.com/debops" rel="me" />
     <link href="https://debops.org/" rel="me" />
     <link href="https://docs.debops.org/" rel="me" />
+    <meta name="theme-color" content="#f5f1ec" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1715" media="(prefers-color-scheme: dark)" />
     <meta property="og:title" content="DebOps - Your Debian-based data center in a box" />
+    <meta property="og:site_name" content="DebOps" />
+    <meta property="og:locale" content="en_US" />
     <meta
       property="og:description"
       content="A set of Free and Open Source tools to bootstrap and manage an IT infrastructure based on Debian or Ubuntu, using Ansible."
     />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://debops.github.io/" />
-    <meta property="og:image" content="https://debops.github.io/debops-logo.png" />
+    <meta property="og:url" content="https://debops.org/" />
+    <meta property="og:image" content="https://debops.org/debops-logo.png" />
+    <meta property="og:image:width" content="187" />
+    <meta property="og:image:height" content="200" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="DebOps - Your Debian-based data center in a box" />
+    <meta
+      name="twitter:description"
+      content="A set of Free and Open Source tools to bootstrap and manage an IT infrastructure based on Debian or Ubuntu, using Ansible."
+    />
+    <meta name="twitter:image" content="https://debops.org/debops-logo.png" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "DebOps",
+        "url": "https://debops.org/",
+        "inLanguage": "en",
+        "description": "A set of Free and Open Source tools to bootstrap and manage an IT infrastructure based on Debian or Ubuntu, using Ansible.",
+        "sameAs": [
+          "https://github.com/debops",
+          "https://fosstodon.org/@debops",
+          "https://matrix.to/#/#debops:matrix.org",
+          "https://docs.debops.org/"
+        ]
+      }
+    </script>
     <style>
       :root {
         color-scheme: light dark;
@@ -191,11 +220,13 @@
       @media (min-width: 40rem) {
         .cards {
           grid-template-columns: repeat(2, 1fr);
+          grid-template-rows: repeat(3, auto);
+          grid-auto-flow: column;
         }
-      }
-      @media (min-width: 72rem) {
-        .cards {
-          grid-template-columns: 1fr;
+        .cards > :last-child:nth-child(odd) {
+          grid-column: 1 / -1;
+          justify-self: center;
+          width: calc(50% - 0.5rem);
         }
       }
       .card {
@@ -223,6 +254,82 @@
         font-size: 0.9rem;
         color: var(--text-muted);
         word-break: break-word;
+      }
+      .install {
+        margin: 0 0 2.5rem;
+      }
+      .tabs {
+        margin: 0 0 2.5rem;
+      }
+      .tabs input[type="radio"] {
+        display: none;
+      }
+      .tabs label {
+        display: inline-block;
+        margin: 0 0.25rem 0 0;
+        padding: 0.5rem 0.75rem 0.4rem;
+        font-weight: 600;
+        color: var(--text-muted);
+        border-bottom: 2px solid transparent;
+        cursor: pointer;
+      }
+      .tabs:has(#tab-setup:checked) label[for="tab-setup"],
+      .tabs:has(#tab-community:checked) label[for="tab-community"] {
+        color: var(--accent);
+        border-bottom-color: var(--accent);
+      }
+      .tab-panels {
+        display: grid;
+        margin-top: 1rem;
+      }
+      .tab-panel {
+        grid-area: 1 / 1;
+      }
+      .tab-panel-community {
+        visibility: hidden;
+        pointer-events: none;
+      }
+      .tabs:has(#tab-setup:checked) .tab-panel-setup,
+      .tabs:has(#tab-community:checked) .tab-panel-community {
+        visibility: visible;
+        pointer-events: auto;
+      }
+      .tabs:has(#tab-community:checked) .tab-panel-setup {
+        visibility: hidden;
+        pointer-events: none;
+      }
+      .tab-panel .cards,
+      .tab-panel .install {
+        margin: 0;
+      }
+      .install-list {
+        display: grid;
+        gap: 1rem;
+      }
+      .install-item {
+        padding: 1rem 1.25rem 1.25rem;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 0.75rem;
+      }
+      .install-item p {
+        margin: 0 0 0.6rem;
+        font-size: 0.9rem;
+        color: var(--text-muted);
+      }
+      .install-item pre {
+        margin: 0;
+        padding: 0.75rem 1rem;
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: 0.5rem;
+        overflow-x: auto;
+      }
+      .install-item code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas,
+          "Liberation Mono", monospace;
+        font-size: 0.9rem;
+        color: var(--text);
       }
       footer {
         padding-bottom: 3.5rem;
@@ -305,23 +412,62 @@
         machines, or even LXC/Docker containers.
       </p>
 
-      <div class="cards">
-        <a class="card" href="https://github.com/debops/debops">
-          <h2>GitHub repository</h2>
-          <p>Source code, issues and pull requests - github.com/debops/debops</p>
-        </a>
-        <a class="card" href="https://docs.debops.org/">
-          <h2>Documentation</h2>
-          <p>User manual, guides and reference - docs.debops.org</p>
-        </a>
-        <a class="card" href="https://matrix.to/#/#debops:matrix.org">
-          <h2>Matrix room</h2>
-          <p>Chat with us on Matrix - #debops:matrix.org</p>
-        </a>
-        <a class="card" href="https://fosstodon.org/@debops">
-          <h2>Mastodon</h2>
-          <p>Find us on Mastodon - @debops@fosstodon.org</p>
-        </a>
+      <div class="tabs">
+        <input type="radio" name="tab" id="tab-setup" checked />
+        <label for="tab-setup">Quick setup</label>
+        <input type="radio" name="tab" id="tab-community" />
+        <label for="tab-community">Community</label>
+
+        <div class="tab-panels">
+          <div class="tab-panel tab-panel-setup">
+            <section class="install">
+              <div class="install-list">
+                <div class="install-item">
+                  <p>Prerequisites (Debian/Ubuntu)</p>
+                  <pre><code>sudo apt install build-essential python3-dev libffi-dev libssl-dev \
+                 libsasl2-dev libldap2-dev pipx</code></pre>
+                </div>
+                <div class="install-item">
+                  <p>Python package with Ansible (roles and playbooks included)</p>
+                  <pre><code>pipx install --include-deps debops[ansible]</code></pre>
+                </div>
+                <div class="install-item">
+                  <p>Ansible Collection with roles and playbooks - alternative for existing Ansible users</p>
+                  <pre><code>ansible-galaxy collection install debops.debops</code></pre>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <div class="tab-panel tab-panel-community">
+            <div class="cards">
+              <a class="card" href="https://github.com/debops/debops">
+                <h2>GitHub repository</h2>
+                <p>Source code, issues and pull requests - github.com/debops/debops</p>
+              </a>
+              <a class="card" href="https://pypi.org/project/debops/">
+                <h2>PyPI</h2>
+                <p>Python package with roles, playbooks and scripts - pypi.org/project/debops</p>
+              </a>
+              <a class="card" href="https://galaxy.ansible.com/ui/repo/published/debops/debops/">
+                <h2>Ansible Galaxy</h2>
+                <p>Ansible Collection with roles and playbooks - galaxy.ansible.com/debops/debops</p>
+              </a>
+              <a class="card" href="https://docs.debops.org/">
+                <h2>Documentation</h2>
+                <p>User manual, guides and reference - docs.debops.org</p>
+              </a>
+              <a class="card" href="https://matrix.to/#/#debops:matrix.org">
+                <h2>Matrix room</h2>
+                <p>Chat with us on Matrix - #debops:matrix.org</p>
+              </a>
+              <a class="card" href="https://fosstodon.org/@debops">
+                <h2>Mastodon</h2>
+                <p>Find us on Mastodon - @debops@fosstodon.org</p>
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </main>
 
