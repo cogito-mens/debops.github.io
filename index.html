@@ -98,9 +98,19 @@
       }
       .cards {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+        grid-template-columns: 1fr;
         gap: 1rem;
         margin: 0 0 2.5rem;
+      }
+      @media (min-width: 40rem) {
+        .cards {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (min-width: 72rem) {
+        .cards {
+          grid-template-columns: 1fr;
+        }
       }
       .card {
         display: block;
