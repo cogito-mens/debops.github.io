@@ -5,7 +5,7 @@ organization site for [DebOps](https://debops.org/).
 
 ## Purpose
 
-The page has two jobs:
+The page is a landing page for the DebOps project with two jobs:
 
 1. **Mastodon verification.** The `rel="me"` links in the page head let
    Mastodon verify the account: the *GitHub* field on the
@@ -14,9 +14,18 @@ The page has two jobs:
    (`<link rel="me" href="https://fosstodon.org/@debops">`). A green
    checkmark is shown once the link is verified.
 
-2. **Redirect.** Visitors are redirected (via a meta refresh, the only
-   redirect available on GitHub Pages) to the main repository at
-   <https://github.com/debops/debops>.
+2. **Landing page.** A short project description with links to the GitHub
+   repository, the documentation and the Matrix room. It follows the OS
+   light/dark preference with a manual toggle at the bottom of the screen.
+
+| File | Description |
+|------|-------------|
+| `index.html` | The landing page with the `rel="me"` verification links |
+| `debops-logo.png` | Project logo (raster fallback), copied from `lib/images/debops.png` in `debops/debops` |
+| `debops-logo-full.svg` | Full vector logo with the wordmark `<text>` removed, used for the header logo and the faded background, copied from `lib/images/debops.svg` in `debops/debops` |
+| `LICENSE` | GPL-3.0-or-later, the project license |
+| `LICENSE-CC-BY-SA-4.0` | CC BY-SA 4.0, for the DebOps logo |
+| `favicon.ico` | DebOps favicon, copied from `lib/images/favicon.ico` in `debops/debops` |
 
 ## Logo attribution
 
