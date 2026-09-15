@@ -227,6 +227,44 @@
       .install {
         margin: 0 0 2.5rem;
       }
+      .tabs {
+        margin: 0 0 2.5rem;
+      }
+      .tabs input[type="radio"] {
+        display: none;
+      }
+      .tabs label {
+        display: inline-block;
+        margin: 0 0.25rem 0 0;
+        padding: 0.5rem 0.75rem 0.4rem;
+        font-weight: 600;
+        color: var(--text-muted);
+        border-bottom: 2px solid transparent;
+        cursor: pointer;
+      }
+      .tabs:has(#tab-setup:checked) label[for="tab-setup"],
+      .tabs:has(#tab-community:checked) label[for="tab-community"] {
+        color: var(--accent);
+        border-bottom-color: var(--accent);
+      }
+      .tab-panel {
+        display: none;
+        margin-top: 1rem;
+      }
+      .tab-panel-setup {
+        display: block;
+      }
+      .tabs:has(#tab-setup:checked) .tab-panel-setup,
+      .tabs:has(#tab-community:checked) .tab-panel-community {
+        display: block;
+      }
+      .tabs:has(#tab-community:checked) .tab-panel-setup {
+        display: none;
+      }
+      .tab-panel .cards,
+      .tab-panel .install {
+        margin: 0;
+      }
       .install-list {
         display: grid;
         gap: 1rem;
@@ -337,50 +375,61 @@
         machines, or even LXC/Docker containers.
       </p>
 
-      <div class="cards">
-        <a class="card" href="https://github.com/debops/debops">
-          <h2>GitHub repository</h2>
-          <p>Source code, issues and pull requests - github.com/debops/debops</p>
-        </a>
-        <a class="card" href="https://pypi.org/project/debops/">
-          <h2>PyPI</h2>
-          <p>Python package with roles, playbooks and scripts - pypi.org/project/debops</p>
-        </a>
-        <a class="card" href="https://galaxy.ansible.com/ui/repo/published/debops/debops/">
-          <h2>Ansible Galaxy</h2>
-          <p>Ansible Collection with roles and playbooks - galaxy.ansible.com/debops/debops</p>
-        </a>
-        <a class="card" href="https://docs.debops.org/">
-          <h2>Documentation</h2>
-          <p>User manual, guides and reference - docs.debops.org</p>
-        </a>
-        <a class="card" href="https://matrix.to/#/#debops:matrix.org">
-          <h2>Matrix room</h2>
-          <p>Chat with us on Matrix - #debops:matrix.org</p>
-        </a>
-        <a class="card" href="https://fosstodon.org/@debops">
-          <h2>Mastodon</h2>
-          <p>Find us on Mastodon - @debops@fosstodon.org</p>
-        </a>
-      </div>
+      <div class="tabs">
+        <input type="radio" name="tab" id="tab-setup" checked />
+        <label for="tab-setup">Quick setup</label>
+        <input type="radio" name="tab" id="tab-community" />
+        <label for="tab-community">Community</label>
 
-      <section class="install">
-        <div class="install-list">
-          <div class="install-item">
-            <p>Prerequisites (Debian/Ubuntu)</p>
-            <pre><code>sudo apt install build-essential python3-dev libffi-dev libssl-dev \
+        <div class="tab-panel tab-panel-setup">
+          <section class="install">
+            <div class="install-list">
+              <div class="install-item">
+                <p>Prerequisites (Debian/Ubuntu)</p>
+                <pre><code>sudo apt install build-essential python3-dev libffi-dev libssl-dev \
                  libsasl2-dev libldap2-dev pipx</code></pre>
-          </div>
-          <div class="install-item">
-            <p>Python package with Ansible</p>
-            <pre><code>pipx install --include-deps debops[ansible]</code></pre>
-          </div>
-          <div class="install-item">
-            <p>Ansible Collection with roles and playbooks</p>
-            <pre><code>ansible-galaxy collection install debops.debops</code></pre>
+              </div>
+              <div class="install-item">
+                <p>Python package with Ansible</p>
+                <pre><code>pipx install --include-deps debops[ansible]</code></pre>
+              </div>
+              <div class="install-item">
+                <p>Ansible Collection with roles and playbooks</p>
+                <pre><code>ansible-galaxy collection install debops.debops</code></pre>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <div class="tab-panel tab-panel-community">
+          <div class="cards">
+            <a class="card" href="https://github.com/debops/debops">
+              <h2>GitHub repository</h2>
+              <p>Source code, issues and pull requests - github.com/debops/debops</p>
+            </a>
+            <a class="card" href="https://pypi.org/project/debops/">
+              <h2>PyPI</h2>
+              <p>Python package with roles, playbooks and scripts - pypi.org/project/debops</p>
+            </a>
+            <a class="card" href="https://galaxy.ansible.com/ui/repo/published/debops/debops/">
+              <h2>Ansible Galaxy</h2>
+              <p>Ansible Collection with roles and playbooks - galaxy.ansible.com/debops/debops</p>
+            </a>
+            <a class="card" href="https://docs.debops.org/">
+              <h2>Documentation</h2>
+              <p>User manual, guides and reference - docs.debops.org</p>
+            </a>
+            <a class="card" href="https://matrix.to/#/#debops:matrix.org">
+              <h2>Matrix room</h2>
+              <p>Chat with us on Matrix - #debops:matrix.org</p>
+            </a>
+            <a class="card" href="https://fosstodon.org/@debops">
+              <h2>Mastodon</h2>
+              <p>Find us on Mastodon - @debops@fosstodon.org</p>
+            </a>
           </div>
         </div>
-      </section>
+      </div>
     </main>
 
     <footer>
